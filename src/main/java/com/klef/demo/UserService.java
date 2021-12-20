@@ -14,12 +14,12 @@ public class UserService {
 		return userrepo.getUser(email);
 	}
 	
-	public String addEmployee(User user) {
+	public String addUser(User user) {
 		userrepo.save(user);
 		return "added";
 	}
 	
-	public String deleteEmployee(String email) {
+	public String deleteUser(String email) {
 		userrepo.deleteById(email);
 		return "deleted";
 	}

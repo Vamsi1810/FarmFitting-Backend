@@ -16,16 +16,16 @@ public class UserController {
 	UserService user;
 	
 	@GetMapping("/user/{email}")
-	public User getemprecord(@PathVariable("email")String email) {
+	public User getUser(@PathVariable("email")String email) {
 		return user.getUser(email);
 	}
 	
 	@PostMapping("/user/add")
-	public String emprecord(@RequestBody User u){
-		return user.addEmployee(u);
+	public String adduser(@RequestBody User u){
+		return user.addUser(u);
 	}
 	@DeleteMapping("/user/delete/{email}")
-	public String emprecord(@PathVariable("email")String email){
-		return user.deleteEmployee(email);
+	public String deleteuser(@PathVariable("email")String email){
+		return user.deleteUser(email);
 	}
 }
