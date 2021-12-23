@@ -18,4 +18,9 @@ public class contactusService {
 	public List<contactus> getQuery(){
 		return (List<contactus>) contactrepo.findAll();
 	}
+	public String deleteQuery(int id) {
+		contactrepo.deleteById(id);
+		return "Deleted";
+	}
 }
+

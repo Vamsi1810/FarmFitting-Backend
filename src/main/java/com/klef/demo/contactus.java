@@ -10,8 +10,16 @@ import javax.persistence.Table;
 public class contactus {
 
 	@Id
+	@Column(name="id")
+	private int id;
 	@Column(name="Farmer_Email")
 	private String email;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	@Column(name="Farmer_Name")
 	private String name;
 	@Column(name="Contact_Number")

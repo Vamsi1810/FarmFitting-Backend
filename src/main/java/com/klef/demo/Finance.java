@@ -1,4 +1,4 @@
-package com.klef.demo;
+		package com.klef.demo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

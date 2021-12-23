@@ -32,4 +32,8 @@ public class UserService {
 		return "Found";
 	}
 	
+	public String updateUser(User user) {
+		userrepo.save(user);
+		return "updated";
+	}
 }
