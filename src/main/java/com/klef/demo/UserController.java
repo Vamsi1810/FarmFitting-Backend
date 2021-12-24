@@ -24,24 +24,24 @@ public class UserController {
 	
 	@PostMapping("/user/add")
 	@CrossOrigin
-	public String adduser(@RequestBody User u){
+	public Status adduser(@RequestBody User u){
 		return user.addUser(u);
 	}
 	@DeleteMapping("/user/delete/{email}")
 	@CrossOrigin
-	public String deleteuser(@PathVariable("email")String email){
+	public Status deleteuser(@PathVariable("email")String email){
 		return user.deleteUser(email);
 	}
 	
 	@GetMapping("/user/login/{email}/{password}")
 	@CrossOrigin
-	public String findUser(@PathVariable("email")String email,@PathVariable("password")String password) {
+	public Status findUser(@PathVariable("email")String email,@PathVariable("password")String password) {
 		return user.loginCheck(email, password);
 	}
 	
 	@PutMapping("/user/update")
 	@CrossOrigin
-	public String updateUser(@RequestBody User u) {
+	public Status updateUser(@RequestBody User u) {
 		return user.updateUser(u);
 	}
 }

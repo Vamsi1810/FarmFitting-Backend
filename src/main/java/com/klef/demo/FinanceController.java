@@ -20,7 +20,7 @@ public class FinanceController {
 	
 	@PostMapping("/user/finance/add")
 	@CrossOrigin
-	public String addFinance(@RequestBody Finance fin) {
+	public Status addFinance(@RequestBody Finance fin) {
 		return finserv.addFinancePortal(fin);
 	}
 	
@@ -32,7 +32,7 @@ public class FinanceController {
 	
 	@DeleteMapping("/user/finance/delete/record/{id}")
 	@CrossOrigin
-	public String deleteRecord(@PathVariable("id") int id) {
+	public Status deleteRecord(@PathVariable("id") int id) {
 		return finserv.deleteRecord(id);
 	}
 }

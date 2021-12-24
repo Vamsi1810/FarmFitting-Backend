@@ -10,17 +10,19 @@ public class FinanceService {
 	@Autowired
 	FinanceRepository finrepo;
 	
-	public String addFinancePortal(Finance fin){
+	public Status addFinancePortal(Finance fin){
 		finrepo.save(fin);
-		return "Added";
+		Status s = new Status("Added");
+		return s;
 	}
 	
 	public List<Finance> getFinanceFunction(String email) {
 		return (List<Finance>)finrepo.getAllThroughId(email);
 	}
 	
-	public String deleteRecord(int id) {
+	public Status deleteRecord(int id) {
 		finrepo.deleteById(id);
-		return "Deleted";
+		Status s = new Status("Deleted");
+		return s;
 	}
 }

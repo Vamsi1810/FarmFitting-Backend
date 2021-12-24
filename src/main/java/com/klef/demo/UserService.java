@@ -14,26 +14,31 @@ public class UserService {
 		return userrepo.getUser(email);
 	}
 	
-	public String addUser(User user) {
+	public Status addUser(User user) {
 		userrepo.save(user);
-		return "added";
+		Status s = new Status("Success");
+		return s;
 	}
 	
-	public String deleteUser(String email) {
+	public Status deleteUser(String email) {
 		userrepo.deleteById(email);
-		return "deleted";
+		Status s = new Status("Deleted");
+		return s;
 	}
 	
-	public String loginCheck(String email,String password) {
+	public Status loginCheck(String email,String password) {
 		User u = userrepo.checkLogin(email, password);
 		if(u!=null) {
-			return "NotFound";
+			Status s = new Status("NotFound");
+			return s;
 		}
-		return "Found";
+		Status s = new Status("Found");
+		return s;
 	}
 	
-	public String updateUser(User user) {
+	public Status updateUser(User user) {
 		userrepo.save(user);
-		return "updated";
+		Status s = new Status("Updated");
+		return s;
 	}
 }

@@ -20,7 +20,7 @@ public class contactusController {
 	
 	@PostMapping("/query/send")
 	@CrossOrigin
-	public String sendquery(@RequestBody contactus cus) {
+	public Status sendquery(@RequestBody contactus cus) {
 		return query.sendQuery(cus);
 	}
 	
@@ -32,7 +32,7 @@ public class contactusController {
 	
 	@DeleteMapping("/query/delete/{id}")
 	@CrossOrigin
-	public String deleteQuery(@PathVariable("id")int id) {
+	public Status deleteQuery(@PathVariable("id")int id) {
 		return query.deleteQuery(id);
 	}
 }

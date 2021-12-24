@@ -10,17 +10,19 @@ public class contactusService {
 	@Autowired
 	contactusRepository contactrepo;
 	
-	public String sendQuery(contactus query) {
+	public Status sendQuery(contactus query) {
 		contactrepo.save(query);
-		return "reached";
+		Status s = new Status("Reached");
+		return s;
 	}
 	
 	public List<contactus> getQuery(){
 		return (List<contactus>) contactrepo.findAll();
 	}
-	public String deleteQuery(int id) {
+	public Status deleteQuery(int id) {
 		contactrepo.deleteById(id);
-		return "Deleted";
+		Status s = new Status("Deleted");
+		return s;
 	}
 }
 
