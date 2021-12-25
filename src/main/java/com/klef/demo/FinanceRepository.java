@@ -10,6 +10,8 @@ public interface FinanceRepository extends CrudRepository<Finance,Integer> {
 	@Query("from Finance where email = :email")
 	public List<Finance> getAllThroughId(@Param("email")String email);
 	
+	@Query("from Finance where email = :email and type = :type")
+	public List<Finance> getDataBasedOnType(@Param("email")String email, @Param("type")String type);
 //	@Query("delete from Finance where email = :email and id = :id")
 //	public String deleteRecord(@Param("email")String email,@Param("id")int id);
 }

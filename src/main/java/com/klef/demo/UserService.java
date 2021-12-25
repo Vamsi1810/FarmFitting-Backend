@@ -28,7 +28,8 @@ public class UserService {
 	
 	public Status loginCheck(String email,String password) {
 		User u = userrepo.checkLogin(email, password);
-		if(u!=null) {
+		   System.out.println(u);
+		if(u==null) {
 			Status s = new Status("NotFound");
 			return s;
 		}

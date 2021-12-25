@@ -20,6 +20,10 @@ public class FinanceService {
 		return (List<Finance>)finrepo.getAllThroughId(email);
 	}
 	
+	public List<Finance> getDataBasedOnType(String email,String type){
+		return (List<Finance>)finrepo.getDataBasedOnType(email, type);
+	}
+	
 	public Status deleteRecord(int id) {
 		finrepo.deleteById(id);
 		Status s = new Status("Deleted");

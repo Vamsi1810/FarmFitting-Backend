@@ -29,6 +29,11 @@ public class FinanceController {
 	public List<Finance> getFinanceFunction(@PathVariable("email") String email) {
 		return finserv.getFinanceFunction(email);
 	}
+	@GetMapping("/user/finance/{email}/{type}")
+	@CrossOrigin
+	public List<Finance> getFinanceBasedOnType(@PathVariable("email")String email,@PathVariable("type")String type){
+		return finserv.getDataBasedOnType(email, type);
+	}
 	
 	@DeleteMapping("/user/finance/delete/record/{id}")
 	@CrossOrigin

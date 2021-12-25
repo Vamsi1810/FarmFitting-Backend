@@ -13,7 +13,7 @@ public class Finance {
 	
 	@Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Rand_id")
+	@Column(name="id")
 	private int id;
 	@Column(name="Email")
 	private String email;
