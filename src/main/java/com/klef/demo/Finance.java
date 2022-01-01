@@ -14,7 +14,7 @@ public class Finance {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private String id;
 	@Column(name="Email")
 	private String email;
 	@Column(name="Type")
@@ -25,10 +25,10 @@ public class Finance {
 	private String purpose;
 	
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getEmail() {
