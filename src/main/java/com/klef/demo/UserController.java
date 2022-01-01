@@ -1,5 +1,7 @@
 package com.klef.demo;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 	@Autowired
 	UserService user;
+	
+	@Autowired
+	EmailService es;
 	
 	@CrossOrigin
 	@GetMapping("/user/getdetails/{email}")
@@ -35,7 +40,8 @@ public class UserController {
 	
 	@GetMapping("/user/login/{email}/{password}")
 	@CrossOrigin
-	public Status findUser(@PathVariable("email")String email,@PathVariable("password")String password) {
+	public Status findUser(@PathVariable("email")String email,@PathVariable("password")String password) throws MessagingException {
+		es.sendHtmlMessage(email,"Login Success","<h1>Thank your login is successful</h1>");
 		return user.loginCheck(email, password);
 	}
 	

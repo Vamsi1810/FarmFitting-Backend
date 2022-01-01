@@ -11,13 +11,13 @@ public class contactus {
 
 	@Id
 	@Column(name="id")
-	private int id;
+	private String id;
 	@Column(name="Farmer_Email")
 	private String email;
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	@Column(name="Farmer_Name")
