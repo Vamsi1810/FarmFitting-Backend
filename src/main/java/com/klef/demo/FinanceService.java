@@ -18,6 +18,13 @@ public class FinanceService {
 		return s;
 	}
 	
+	
+	public Status updateFinancePortal(Finance fin) {
+		finrepo.save(fin);
+		Status s = new Status("updated");
+		return s;
+	}
+	
 	public List<Finance> getFinanceFunction(String email) {
 		return (List<Finance>)finrepo.getAllThroughId(email);
 	}

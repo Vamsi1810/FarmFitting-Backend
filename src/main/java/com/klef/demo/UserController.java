@@ -29,7 +29,7 @@ public class UserController {
 	
 	@PostMapping("/user/add")
 	@CrossOrigin
-	public Status adduser(@RequestBody User u){
+	public Status adduser(@RequestBody User u) throws Exception{
 		return user.addUser(u);
 	}
 	@DeleteMapping("/user/delete/{email}")
@@ -40,7 +40,7 @@ public class UserController {
 	
 	@GetMapping("/user/login/{email}/{password}")
 	@CrossOrigin
-	public Status findUser(@PathVariable("email")String email,@PathVariable("password")String password) throws MessagingException {
+	public Status findUser(@PathVariable("email")String email,@PathVariable("password")String password) throws Exception {
 		es.sendHtmlMessage(email,"Login Success","<h1>Thank your login is successful</h1>");
 		return user.loginCheck(email, password);
 	}

@@ -20,6 +20,14 @@ public class User {
      private String location;
      @Column(name="password")
      private String password;
+     @Column(name="Access_key")
+     private String accessKey;
+	public String getAccessKey() {
+		return accessKey;
+	}
+	public void setAccessKey(String accessKey) {
+		this.accessKey = accessKey;
+	}
 	public String getName() {
 		return name;
 	}
