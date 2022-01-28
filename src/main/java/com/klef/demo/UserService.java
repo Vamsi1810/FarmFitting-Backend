@@ -21,6 +21,7 @@ public class UserService {
 	}
 	
 	public Status addUser(User user) throws Exception {
+		cipher = Cipher.getInstance("AES"); 
 		SecretKey sk = keyGenerator();
 		String encrypted = encrypt(user.getPassword(),sk);
 		user.setPassword(encrypted);
@@ -40,17 +41,22 @@ public class UserService {
 	public Status loginCheck(String email,String password) throws Exception {
 		User useremail = getUser(email);
 //		System.out.println(useremail.getEmail());
-		if(useremail.getEmail()!=null && useremail.getPassword().equals(password)) {
-			
-//			String pass = useremail.getPassword();
-//			String acskey = useremail.getAccessKey();
-//			byte[] decodedKey = Base64.getDecoder().decode(acskey);
-//			SecretKey skr = new SecretKeySpec(decodedKey,0,decodedKey.length,"AES");
-//			String decryptpass = decrypt(pass,skr);
+		if(useremail.getEmail()!=null) {
+			String pass = useremail.getPassword();
+			System.out.println(pass);
+			String acskey = useremail.getAccessKey();
+			System.out.println(acskey);
+			byte[] decodedKey = Base64.getDecoder().decode(acskey);
+			System.out.println(decodedKey);
+			SecretKey skr = new SecretKeySpec(decodedKey,0,decodedKey.length,"AES");
+			System.out.println(skr);
+			String decryptpass = decrypt(pass,skr);
+			System.out.println(decryptpass);
 //			System.out.println("Decrypted password is "+decryptpass);
-//			if(decryptpass.equals(password)) {
+			if(decryptpass.equals(password)) {
 				Status s = new Status("Found");
 				return s;
+			}
 		}
 			Status s = new Status("NotFound");
 			return s;
@@ -74,6 +80,7 @@ public class UserService {
 
     public String decrypt(String encryptedText, SecretKey secretKey)
             throws Exception {
+    	cipher = Cipher.getInstance("AES");
         Base64.Decoder decoder = Base64.getDecoder();
         byte[] encryptedTextByte = decoder.decode(encryptedText);
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
@@ -86,8 +93,6 @@ public class UserService {
     	KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         keyGenerator.init(128); // block size is 128bits
         SecretKey secretKey = keyGenerator.generateKey();
-        cipher = Cipher.getInstance("AES"); 
         return secretKey;
-        
     }
 }
