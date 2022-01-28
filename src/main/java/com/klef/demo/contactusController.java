@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200/")
+@CrossOrigin(origins = "*")
 public class contactusController {
 
 	@Autowired
 	contactusService query;
 	
+	
 	@PostMapping("/query/send")
-	@CrossOrigin
 	public Status sendquery(@RequestBody contactus cus) {
 		return query.sendQuery(cus);
 	}
 	
+	
 	@GetMapping("/query/all")
-	@CrossOrigin
 	public List<contactus> getQueries(){
 		return query.getQuery();
 	}
 	
+	
 	@DeleteMapping("/query/delete/{id}")
-	@CrossOrigin
 	public Status deleteQuery(@PathVariable("id")int id) {
 		return query.deleteQuery(id);
 	}

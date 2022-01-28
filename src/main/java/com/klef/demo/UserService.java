@@ -40,17 +40,17 @@ public class UserService {
 	public Status loginCheck(String email,String password) throws Exception {
 		User useremail = getUser(email);
 //		System.out.println(useremail.getEmail());
-		if(useremail.getEmail()!=null) {
-			String pass = useremail.getPassword();
-			String acskey = useremail.getAccessKey();
-			byte[] decodedKey = Base64.getDecoder().decode(acskey);
-			SecretKey skr = new SecretKeySpec(decodedKey,0,decodedKey.length,"AES");
-			String decryptpass = decrypt(pass,skr);
+		if(useremail.getEmail()!=null && useremail.getPassword().equals(password)) {
+			
+//			String pass = useremail.getPassword();
+//			String acskey = useremail.getAccessKey();
+//			byte[] decodedKey = Base64.getDecoder().decode(acskey);
+//			SecretKey skr = new SecretKeySpec(decodedKey,0,decodedKey.length,"AES");
+//			String decryptpass = decrypt(pass,skr);
 //			System.out.println("Decrypted password is "+decryptpass);
-			if(decryptpass.equals(password)) {
+//			if(decryptpass.equals(password)) {
 				Status s = new Status("Found");
 				return s;
-			}
 		}
 			Status s = new Status("NotFound");
 			return s;
